@@ -1,4 +1,25 @@
-<div class="container">
+<h1>Do you want to post this ?</h1>
+
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+
+<%= form.hidden_field :content %>
+<p>Content: <%= @post.content %></p>
+<%= image_tag(@post.image.url, size: 17*17) if @post.image && @post.image.url %>
+<%= form.hidden_field :image_cache %>
+<%= form.submit "Post" %>
+<% end %>
+<%= form_with(model:@post, url:new_posts_path, local: true, method:"get") do |form| %>
+<%= form.hidden_field :image_cache %>
+<%= form.submit "Do not post", name: 'Back' %>
+<% end %>
+
+
+
+
+
+
+
+<!-- <div class="container">
 <h1>Confirmation screen</h1>
 <%= form_with(model: @post, url: posts_path, local: true) do |form| %>
   <%= image_tag(@post.image.url, size: 17*17) if @post.image && @post.image.url %>
@@ -15,4 +36,4 @@
   <%= form.hidden_field :content %>
   <%= form.submit "Return", name: "back" %>
 <% end %>
-</div>
+</div> -->

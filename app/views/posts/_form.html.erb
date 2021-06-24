@@ -4,19 +4,14 @@
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.full_messages each do |message| %>
+        <% post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
+   <div class="field">
     <%= form.label :image %>
     <!-- When returning from the confirmation screen to the new creation screen, -->
     <!-- Description to display the uploaded image -->
@@ -24,8 +19,11 @@
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
    </div>
-
-  <div class="actions">
+   <div class="field">
+     <%= form.label :content %>
+     <%= form.text_area :content %>
+   </div>
+   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
