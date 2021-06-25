@@ -12,7 +12,4 @@ class User < ApplicationRecord
     # has_secure_password
     validates :password, presence: true, length: { minimum: 6 }
     has_many :posts
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-         has_many :posts
 end

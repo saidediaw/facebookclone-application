@@ -8,7 +8,7 @@
 <%= form.hidden_field :image_cache %>
 <%= form.submit "Post" %>
 <% end %>
-<%= form_with(model:@post, url:new_posts_path, local: true, method:"get") do |form| %>
+<%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |form| %>
 <%= form.hidden_field :image_cache %>
 <%= form.submit "Do not post", name: 'Back' %>
 <% end %>

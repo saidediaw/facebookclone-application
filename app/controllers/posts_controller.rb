@@ -17,11 +17,11 @@ class PostsController < ApplicationController
     end
    end
 
-  def confirm
-    @post = Post.new(post_params)
-    @post.user = new_user
-
-  end
+   def confirm
+     @post = current_user.posts.build(post_params)
+     @user = @post.user
+       render :new if @post.invalid?
+     end
   def edit
   end
 

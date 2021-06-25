@@ -1,20 +1,18 @@
-<%= form_with(model: post) do |form| %>
+<%= form_with(model: post, local: true, url: choose_new_or_edit) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.full_messages.each do |message| %>
+        <% post.errors.full_messages each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-   <div class="field">
+  <div class="field">
     <%= form.label :image %>
-    <!-- When returning from the confirmation screen to the new creation screen, -->
-    <!-- Description to display the uploaded image -->
     <%= image_tag(@post.image.url, size: 17*17) if @post.image && @post.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
